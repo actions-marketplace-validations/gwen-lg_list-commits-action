@@ -11,14 +11,14 @@ jobs:
     name: Check Conventional Commits
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.1
       - uses: webiny/action-conventional-commits@v1.4.2
 
   check-changelog:
     name: "Check Changelog"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
       - name: Generate Changelog
@@ -38,7 +38,7 @@ jobs:
     outputs:
       commits: ${{ steps.list-commits.outputs.commits }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.1
       - uses: ./.
         id: list-commits
 
@@ -54,7 +54,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.commit.id }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           ref: "${{ matrix.commit.id }}"
